@@ -2,7 +2,7 @@ import transactionHistory from './data/transactions.js';
 
 const makeTransactionTableRowMarkup = transaction => {
   const { id, amount, date, business, type, name, account } = transaction;
-
+//используем шаблонные строки
   return `
   <tr>
     <td>${id}</td>
@@ -22,6 +22,6 @@ const transactionTableRowsMarkup = transactionHistory
   .map(makeTransactionTableRowMarkup)
   .join('');
 
-tableEl.insertAdjacentHTML('beforeend', transactionTableRowsMarkup);
+tableEl.insertAdjacentHTML('beforeend', transactionTableRowsMarkup); //добавить новые строки в разметку
 
 console.log(transactionTableRowsMarkup);

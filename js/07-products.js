@@ -20,7 +20,7 @@ import products from './data/proucts.js';//подключение(импорт) 
 */
 ////////// пишем скрипт
 
-// const productEl = document.createElement('article');;//создаем элемент article
+// const productEl = document.createElement('article');//создаем элемент article
 // productEl.classList.add('product');//вешаем класс
 
 // const nameEl = document.createElement('h2');
