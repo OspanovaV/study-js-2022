@@ -1,4 +1,4 @@
-export default [
+export default [ //дефольный экспорт модулей к исходного массива обьектов
   {
     name: 'Сервоприводы',
     description:
