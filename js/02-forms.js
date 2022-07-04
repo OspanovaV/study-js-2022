@@ -10,13 +10,15 @@ const form = document.querySelector('.js-register-form');
 form.addEventListener('submit', onFormSubmit);
 
 function onFormSubmit(event) {
-  event.preventDefault();
+  event.preventDefault();//предотвращает перезагрузку страницы(отмена действия браузера по умолчанию)
 
+   //лучший помощник при сборе данных
   const formData = new FormData(event.currentTarget);
 
   console.log(formData);
 
-  formData.forEach((value, name) => {
+ //посмотреть данные можно при помощи  .forEach
+  formData.forEach((value, name) => { //выводим значение поля е имя
     console.log('onFormSubmit -> name', name);
     console.log('onFormSubmit -> value', value);
   });
