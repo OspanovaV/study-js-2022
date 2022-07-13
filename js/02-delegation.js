@@ -9,7 +9,7 @@ const container = document.querySelector('.js-container');
 container.addEventListener('click', onClick);
 
 function onClick(evt) {
-  if (evt.target.nodeName !== 'BUTTON') {
+  if (evt.target.nodeName !== 'BUTTON') {//если не кнопка, то пропускаем
     return;
   }
 
