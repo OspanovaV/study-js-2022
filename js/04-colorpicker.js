@@ -1,3 +1,12 @@
+/*
+// есть массив обьектов цветов
+// в html есть div(шаблон карточки) и нужно динамически создавать такие карточки
+1.создаём разметку 
+2.зарэндерить эту разметку в html в div 
+3.
+выбираем одну карточку из многих()
+*/
+
 const colors = [
   { hex: '#f44336', rgb: '244,67,54' },
   { hex: '#e91e63', rgb: '233,30,99' },
@@ -14,16 +23,19 @@ const colors = [
   { hex: '#607d8b', rgb: '96,125,139' },
 ];
 
-const paletteContainer = document.querySelector('.js-palette');
-const cardsMarkup = createColorCardsMarkup(colors);
+const paletteContainer = document.querySelector('.js-palette');//получим ссылку к контейнеру куда будем складывать карточки
+const cardsMarkup = createColorCardsMarkup(colors);//тут вызываем массив(colors) обьектов (хранит результат вызова функции всей разметки)
 
-paletteContainer.insertAdjacentHTML('beforeend', cardsMarkup);
+// 2.зарэндерить эту разметку в html 
+paletteContainer.insertAdjacentHTML('beforeend', cardsMarkup);//.insertAdjacentHTML добавляет в html созданную разметку в конец 
 
-paletteContainer.addEventListener('click', onPaletteContainerClick);
+paletteContainer.addEventListener('click', onPaletteContainerClick);//вешаем слушателя на большой контейнер и выполняем функцию
 
-function createColorCardsMarkup(colors) {
-  return colors
-    .map(({ hex, rgb }) => {
+//1.создаём разметку
+function createColorCardsMarkup(colors) {// параметр доступной области видимости(colors)
+  return colors //мэпаем массив colors
+    .map(({ hex, rgb }) => {//для каждого обьекта(цвета) будем возвращать такую карточку
+//для каждого вызова функции будем возвращать такую разметку
       return `
     <div class="color-card">
      <div><div><div> <div
@@ -38,34 +50,36 @@ function createColorCardsMarkup(colors) {
       </div>
     </div>
     `;
-    })
-    .join('');
+    }) 
+    .join('');//методом .join берем массив элементов и сшиваем в одну строку
 }
 
 function onPaletteContainerClick(evt) {
-  const isColorSwatchEl = evt.target.classList.contains('color-swatch');
+  const isColorSwatchEl = evt.target.classList.contains('color-swatch');//содержит элемент с классом color-swatch
 
-  if (!isColorSwatchEl) {
-    return;
+  //проверка куда кликнули
+  if (!isColorSwatchEl) { //если элемент по которому кликнули не содержит isColorSwatchEl 
+    return; //выходим и ничего не делаем
   }
 
   const swatchEl = evt.target;
-  const parentColorCard = swatchEl.closest('.color-card');
+  const parentColorCard = swatchEl.closest('.color-card');//.closest- находит вверху по коду первого элемента с заданным селектором
 
   removeActiveCardClass();
   addActiveCardClass(parentColorCard);
-  setBodyBgColor(swatchEl.dataset.hex);
+  setBodyBgColor(swatchEl.dataset.hex);//вызываем функцию
 }
 
+//меняем backgroundColor на body 
 function setBodyBgColor(color) {
   document.body.style.backgroundColor = color;
 }
 
 function removeActiveCardClass() {
-  const currentActiveCard = document.querySelector('.color-card.is-active');
+  const currentActiveCard = document.querySelector('.color-card.is-active');//ищем элемент(текущую активную карточку) с такими классами
 
-  if (currentActiveCard) {
-    currentActiveCard.classList.remove('is-active');
+  if (currentActiveCard) {// если она есть
+    currentActiveCard.classList.remove('is-active');//удаляем класс 
   }
 }
 
