@@ -10,7 +10,7 @@
 
 const lazyImages = document.querySelectorAll('img[loading="lazy"]');//получим ссылку на img с атрибутом loading="lazy"
 
-lazyImages.forEach(image => {//на каждую картинку
+lazyImages.forEach(image => {dataset.src
 //вешаем слушателя 'load'и сделаем функцию, добавим настройки слушателя события 
   image.addEventListener('load', onImageLoaded, { once: true });
 });
