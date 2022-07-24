@@ -1,4 +1,6 @@
+# под контроль гита не добавляй эту папку
 node_modules/
+
 .cache
 dist/
 .DS_Store

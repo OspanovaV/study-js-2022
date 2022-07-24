@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/luxplanjay/js-22#readme",
   "dependencies": {
-    "joi": "^17.2.1",
-    "shortid": "^2.2.15"
+    "joi": "^17.6.0",
+    "shortid": "^2.2.16"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
