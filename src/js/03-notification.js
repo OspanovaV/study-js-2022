@@ -8,7 +8,7 @@ import '../css/common.css';
  */
 
 const NOTIFICATION_DELAY = 3000;
-let timeoutId = null;
+let timeoutId = null;//глобальная переменная timeoutId
 const refs = {
   notification: document.querySelector('.js-alert'),
 };
@@ -16,24 +16,24 @@ const refs = {
 refs.notification.addEventListener('click', onNotificationClick);
 
 showNotification();
-
 /*
  * Функции
  */
-function onNotificationClick() {
-  hideNotification();
-  clearTimeout(timeoutId);
+//закрываем Notification кликом мышки
+function onNotificationClick() { //при клике на Notification
+  hideNotification();//спрячь её
+  clearTimeout(timeoutId);// и очисти значение timeoutId (отменяет запланированный отложенный вызов функции setTimeout)
 }
-
+//показываем Notification
 function showNotification() {
   refs.notification.classList.add('is-visible');
-
-  timeoutId = setTimeout(() => {
+//автоматически сама закроется Notification
+  timeoutId = setTimeout(() => {//в переменную записываем идентификатор(id) таймаута
     console.log('Закрываем алерт автоматически чтобы не висел');
     hideNotification();
   }, NOTIFICATION_DELAY);
 }
-
+//скрываем Notification
 function hideNotification() {
   refs.notification.classList.remove('is-visible');
 }
